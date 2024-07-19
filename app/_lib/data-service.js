@@ -39,7 +39,7 @@ export async function getCabinPrice(id) {
 
 export const getCabins = async function () {
   const { data, error } = await supabase
-    .from("cabins")
+    .from("huts") // .from("cabins")  //
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
 
@@ -107,7 +107,7 @@ export async function getBookedDatesByCabinId(cabinId) {
     .select("*")
     .eq("cabinId", cabinId)
     .or(`startDate.gte.${today},status.eq.checked-in`);
- // console.log("data from bookings table = ", data);
+  // console.log("data from bookings table = ", data);
 
   if (error) {
     console.error(error);
